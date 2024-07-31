@@ -1,4 +1,5 @@
 import {abFolders, addFileToFileTree, Folder, joinFile} from "../base/files.js";
+import {Analysis} from "../base/AllAnalysis.js";
 
 
 /**
@@ -14,9 +15,14 @@ export interface GithubRepository{
  * */
 async function githubReleasesFileTree({user,repository}:GithubRepository):Promise<Folder>{
     const fileTree:Folder = {children:[],name:"githubReleasesRoot"};
-    const tagInfo = await fetch(`https://api.github.com/repos/${user}/${repository}/releases`);
+    let tagInfo
+    try {
+        tagInfo = await fetch(`https://api.github.com/repos/${user}/${repository}/releases`);
+    }catch (e){
+        throw new Error("Github Api 请求失败! 请检查网络是否畅通。"+e);
+    }
     if(!tagInfo.ok){
-        throw new Error(tagInfo.statusText+" "+tagInfo.statusText+" "+tagInfo.url+" "+await tagInfo.text());
+        throw new Error("仓库名称或者用户名错误，或者达到GitHub速率限制,详细信息:"+tagInfo.status+" "+tagInfo.statusText+" "+tagInfo.url+" "+await tagInfo.text());
     }
     const jsonData = await tagInfo.json() as {
         tag_name:string,
@@ -71,6 +77,6 @@ async function githubReleasesFileTree({user,repository}:GithubRepository):Promis
 /**
  * 从GitHub仓库的releases中解析文件信息
  * */
-export function githubReleasesFilesAnalysis(config:GithubRepository){
+export function githubReleasesFilesAnalysis(config:GithubRepository):Analysis{
     return ()=>githubReleasesFileTree(config);
 }
