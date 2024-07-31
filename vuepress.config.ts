@@ -61,6 +61,10 @@ export default defineUserConfig({
       mountPath:"/软件/clash-verge-rev",
       analysis:githubReleasesFilesAnalysis({user:"clash-verge-rev", repository:"clash-verge-rev"}),
       downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/TrafficMonitor",
+      analysis:githubReleasesFilesAnalysis({user:"zhongyang219", repository:"TrafficMonitor"}),
+      downProxy:cloudflarePagesDownProxy(),
     },
     // -------视频---------
     {
