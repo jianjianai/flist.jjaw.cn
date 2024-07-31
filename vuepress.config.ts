@@ -15,7 +15,7 @@ export default defineUserConfig({
   title: '神奇小破盘',
   description: '神奇小破盘 -- 分享各种有用的文件。',
   head: [['link', { rel: 'icon', href: '/logo.png' }]],
-  shouldPrefetch: true,
+  shouldPrefetch: false,
   plugins:[
     sitemapPlugin({
       hostname: 'flist.jjaw.cn',
