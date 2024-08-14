@@ -70,6 +70,10 @@ export default defineUserConfig({
       mountPath:"/软件/clash-verge-rev",
       analysis:githubReleasesFilesAnalysis({user:"clash-verge-rev", repository:"clash-verge-rev"}),
       downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/clash-verge-rev",
+      analysis:githubReleasesFilesAnalysis({user:"nICEnnnnnnnLee", repository:"BilibiliDown"}),
+      downProxy:cloudflarePagesDownProxy(),
     },
     // -------视频---------
     {
