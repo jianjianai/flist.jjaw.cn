@@ -71,7 +71,7 @@ export default defineUserConfig({
       analysis:githubReleasesFilesAnalysis({user:"clash-verge-rev", repository:"clash-verge-rev"}),
       downProxy:cloudflarePagesDownProxy(),
     }, {
-      mountPath:"/软件/clash-verge-rev",
+      mountPath:"/软件/BilibiliDown",
       analysis:githubReleasesFilesAnalysis({user:"nICEnnnnnnnLee", repository:"BilibiliDown"}),
       downProxy:cloudflarePagesDownProxy(),
     },
