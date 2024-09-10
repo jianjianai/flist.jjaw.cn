@@ -75,6 +75,10 @@ export default defineUserConfig({
       mountPath:"/软件/BilibiliDown",
       analysis:githubReleasesFilesAnalysis({user:"nICEnnnnnnnLee", repository:"BilibiliDown"}),
       downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/git-for-windows",
+      analysis:githubReleasesFilesAnalysis({user:"git-for-windows", repository:"git"}),
+      downProxy:cloudflarePagesDownProxy(),
     },
     // -------视频---------
     {
