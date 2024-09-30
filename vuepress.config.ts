@@ -92,5 +92,6 @@ export default defineUserConfig({
       analysis:githubReleasesFilesAnalysis({user:"panpanaw", repository:"MiLaoShu"}),
       downProxy:cloudflarePagesDownProxy(),
     }
+    
   ])
 })
