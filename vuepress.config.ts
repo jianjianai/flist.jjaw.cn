@@ -81,17 +81,6 @@ export default defineUserConfig({
       analysis:githubReleasesFilesAnalysis({user:"git-for-windows", repository:"git"}),
       downProxy:cloudflarePagesDownProxy(),
     },
-    // -------视频---------
-    {
-      mountPath:"/视频/小马宝莉/G4",
-      analysis:githubReleasesFilesAnalysis({user:"panpanaw", repository:"flist-ponys-g4"}),
-      downProxy:cloudflarePagesDownProxy(),
-    },
-    {
-      mountPath:"/视频",
-      analysis:githubReleasesFilesAnalysis({user:"panpanaw", repository:"MiLaoShu"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }
     
   ])
 })
