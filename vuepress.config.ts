@@ -80,6 +80,50 @@ export default defineUserConfig({
       mountPath:"/软件/git-for-windows",
       analysis:githubReleasesFilesAnalysis({user:"git-for-windows", repository:"git"}),
       downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/yt-dlp",
+      analysis:githubReleasesFilesAnalysis({user:"yt-dlp", repository:"yt-dlp"}),
+      downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/mihomo",
+      analysis:githubReleasesFilesAnalysis({user:"MetaCubeX", repository:"mihomo"}),
+      downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/v2rayN",
+      analysis:githubReleasesFilesAnalysis({user:"2dust", repository:"v2rayN"}),
+      downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/hiddify",
+      analysis:githubReleasesFilesAnalysis({user:"hiddify", repository:"hiddify-app"}),
+      downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/Motrix",
+      analysis:githubReleasesFilesAnalysis({user:"agalwood", repository:"Motrix"}),
+      downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/aria2",
+      analysis:githubReleasesFilesAnalysis({user:"aria2", repository:"aria2"}),
+      downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/ShareX",
+      analysis:githubReleasesFilesAnalysis({user:"ShareX", repository:"ShareX"}),
+      downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/Obsidian",
+      analysis:githubReleasesFilesAnalysis({user:"obsidianmd", repository:"obsidian-releases"}),
+      downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/PowerShell",
+      analysis:githubReleasesFilesAnalysis({user:"PowerShell", repository:"PowerShell"}),
+      downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/neovim",
+      analysis:githubReleasesFilesAnalysis({user:"neovim", repository:"neovim"}),
+      downProxy:cloudflarePagesDownProxy(),
+    }, {
+      mountPath:"/软件/qBittorrent",
+      analysis:githubReleasesFilesAnalysis({user:"qbittorrent", repository:"qBittorrent"}),
+      downProxy:cloudflarePagesDownProxy(),
     },
     
   ])
