@@ -1,0 +1,15 @@
+{
+  "analysis": {
+    "type": "githubReleasesFilesAnalysis",
+    "options": {
+      "user": "v2fly",
+      "repository": "v2ray-core",
+      "authorizationToken": {
+        "$env": "GITHUB_TOKEN"
+      }
+    }
+  },
+  "downProxy": {
+    "type": "cloudflarePagesDownProxy"
+  }
+}
