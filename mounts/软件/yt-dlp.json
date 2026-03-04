@@ -1,0 +1,15 @@
+{
+  "analysis": {
+    "type": "githubReleasesFilesAnalysis",
+    "options": {
+      "user": "yt-dlp",
+      "repository": "yt-dlp",
+      "authorizationToken": {
+        "$env": "GITHUB_TOKEN"
+      }
+    }
+  },
+  "downProxy": {
+    "type": "cloudflarePagesDownProxy"
+  }
+}

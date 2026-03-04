@@ -1,0 +1,15 @@
+{
+  "analysis": {
+    "type": "githubReleasesFilesAnalysis",
+    "options": {
+      "user": "obsidianmd",
+      "repository": "obsidian-releases",
+      "authorizationToken": {
+        "$env": "GITHUB_TOKEN"
+      }
+    }
+  },
+  "downProxy": {
+    "type": "cloudflarePagesDownProxy"
+  }
+}

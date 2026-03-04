@@ -1,0 +1,15 @@
+{
+  "analysis": {
+    "type": "githubReleasesFilesAnalysis",
+    "options": {
+      "user": "hiddify",
+      "repository": "hiddify-app",
+      "authorizationToken": {
+        "$env": "GITHUB_TOKEN"
+      }
+    }
+  },
+  "downProxy": {
+    "type": "cloudflarePagesDownProxy"
+  }
+}
