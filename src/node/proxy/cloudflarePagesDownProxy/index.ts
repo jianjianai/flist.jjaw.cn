@@ -26,7 +26,7 @@ const proxyConfig:{[path:string]:string} = {}
 /**
  * 代理这些文件的下载并生成下载允许的路由列表
  * */
-export function getDownProxyRoutes(){
+function getDownProxyRoutes(){
     return {
         "version": 1,
         "include": [includesPrefx+"**"],
@@ -74,9 +74,11 @@ async function cloudflarePagesDownProxyInner(sourceUrl:string,fileName:string,co
 /**
  * 使用cloudflare pages的下载代理
  * */
-export function cloudflarePagesDownProxy():DownProxy{
+function cloudflarePagesDownProxy():DownProxy{
     return (sourceUrl,fileName,contentType)=>cloudflarePagesDownProxyInner(sourceUrl,fileName,contentType);
 }
+
+export default cloudflarePagesDownProxy;
 
 
 

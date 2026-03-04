@@ -4,15 +4,6 @@ import { FileList } from './src/node/index.js'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { seoPlugin } from '@vuepress/plugin-seo'
 import {FilePageFrontmatter, FolderPageFrontmatter} from "./src/type/index.js";
-import { githubReleasesFilesAnalysis } from "./src/node/analysis/githubReleasesFilesAnalysis/index.js";
-import { cloudflarePagesDownProxy } from "./src/node/proxy/cloudflarePagesDownProxy/index.js";
-import { fileUrlTreeAnalysis } from "./src/node/analysis/fileUrlTreeAnalysis/index.js";
-import { huggingFaceDatasetsAnalysis } from "./src/node/analysis/huggingFaceDatasetsAnalysis/index.js";
-import { vercelDownProxy } from './src/node/proxy/vercelDownProxy/index.js';
-import { netlifyDownProxy } from './src/node/proxy/netlifyDownProxy/index.js';
-import { giteeReleasesFilesAnalysis } from './src/node/analysis/giteeReleasesFilesAnalysis/index.js';
-import { githubReposAnalysis } from './src/node/analysis/githubReposAnalysis/index.js';
-import { giteeReposAnalysis } from './src/node/analysis/giteeReposAnalysis/index.js';
 
 export default defineUserConfig({
   bundler: viteBundler(),
@@ -45,42 +36,5 @@ export default defineUserConfig({
       hostname: 'flist.jjaw.cn'
     })
   ],
-  theme: FileList([
-    {
-      mountPath:"/",
-      analysis:githubReleasesFilesAnalysis({user:"jianjianai", repository:"my-flist-files"}),
-      downProxy:cloudflarePagesDownProxy(),
-    },
-    // --------软件------
-    {
-      mountPath:"/软件/KnapsackToGo4",
-      analysis:githubReleasesFilesAnalysis({user:"jianjianai", repository:"KnapsackToGo4"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/BBDown",
-      analysis:githubReleasesFilesAnalysis({user:"nilaoda", repository:"BBDown"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/ffmpeg",
-      analysis:githubReleasesFilesAnalysis({user:"GyanD", repository:"codexffmpeg"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/ClashMetaForAndroid",
-      analysis:githubReleasesFilesAnalysis({user:"MetaCubeX", repository:"ClashMetaForAndroid"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/clash-verge-rev",
-      analysis:githubReleasesFilesAnalysis({user:"clash-verge-rev", repository:"clash-verge-rev"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/BilibiliDown",
-      analysis:githubReleasesFilesAnalysis({user:"nICEnnnnnnnLee", repository:"BilibiliDown"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/git-for-windows",
-      analysis:githubReleasesFilesAnalysis({user:"git-for-windows", repository:"git"}),
-      downProxy:cloudflarePagesDownProxy(),
-    },
-    
-  ])
+  theme: FileList()
 })

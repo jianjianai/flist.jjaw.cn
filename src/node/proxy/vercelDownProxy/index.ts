@@ -69,9 +69,11 @@ async function vercelDownProxyInner(sourceUrl: string, fileName: string, content
 /**
  * 使用vercel的下载代理
  * */
-export function vercelDownProxy(): DownProxy {
+function vercelDownProxy(): DownProxy {
     return (sourceUrl, fileName, contentType) => vercelDownProxyInner(sourceUrl, fileName, contentType);
 }
+
+export default vercelDownProxy;
 
 
 

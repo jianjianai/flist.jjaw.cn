@@ -1,7 +1,7 @@
 import {App, Theme,} from "vuepress";
 import { getDirname, path } from 'vuepress/utils'
 import {createFileTreePages} from "./base/pages.js";
-import {allAnalysis, AnalysisConfig} from "./base/AllAnalysis.js";
+import {allAnalysis} from "./base/AllAnalysis.js";
 import {
     callExtendsBundlerOptions,
     callOnGenerated,
@@ -10,10 +10,11 @@ import {
     Closable
 } from "./base/eventManager.js";
 import {nprogressPlugin} from "@vuepress/plugin-nprogress";
+import { loadAnalysisConfigFromDir } from "./config/loadAnalysisConfigFromDir.js";
 
 const __dirname = getDirname(import.meta.url)
 
-export function FileList(analysisConfig:AnalysisConfig[]):Theme{
+export function FileList():Theme{
     return ()=>{
         return {
             name:"FList",
@@ -23,6 +24,7 @@ export function FileList(analysisConfig:AnalysisConfig[]):Theme{
             ],
             onInitialized:async (app)=>{
                 await callOnInitialized(app);
+                const analysisConfig = loadAnalysisConfigFromDir("mounts");
                 const fileTree = await allAnalysis(analysisConfig);
                 const pageList = await Promise.all(createFileTreePages(app,fileTree));
                 app.pages.push(...pageList);

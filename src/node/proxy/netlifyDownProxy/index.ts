@@ -71,9 +71,11 @@ async function netlifyDownProxyInner(sourceUrl: string, fileName: string, conten
 /**
  * 使用netlify的下载代理
  * */
-export function netlifyDownProxy(): DownProxy {
+function netlifyDownProxy(): DownProxy {
     return (sourceUrl, fileName, contentType) => netlifyDownProxyInner(sourceUrl, fileName, contentType);
 }
+
+export default netlifyDownProxy;
 
 
 
