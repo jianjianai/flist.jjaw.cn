@@ -11,5 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     permissions: {}
     steps:
-      - name: Trigger Vercel Deploy Hook
-        run: curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"
+      - name: Trigger Cloudflare Pages Deploy Hook
+        run: curl -fsS -d "" "${{ secrets.CLOUDFLARE_DEPLOY_HOOK_URL }}"
