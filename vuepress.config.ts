@@ -13,6 +13,11 @@ import { netlifyDownProxy } from './src/node/proxy/netlifyDownProxy/index.js';
 import { giteeReleasesFilesAnalysis } from './src/node/analysis/giteeReleasesFilesAnalysis/index.js';
 import { githubReposAnalysis } from './src/node/analysis/githubReposAnalysis/index.js';
 import { giteeReposAnalysis } from './src/node/analysis/giteeReposAnalysis/index.js';
+import { buildFlistConfigs, type FlistConfig } from './loadFlistConfigs.js';
+
+// 自动读取 flist/ 目录下的所有 .ts 配置文件，文件路径即为 mountPath
+const flistModules = import.meta.glob('./flist/**/*.ts', { eager: true }) as Record<string, { default: FlistConfig }>;
+const flistConfigs = buildFlistConfigs(flistModules, './flist');
 
 export default defineUserConfig({
   bundler: viteBundler(),
@@ -51,80 +56,7 @@ export default defineUserConfig({
       analysis:githubReleasesFilesAnalysis({user:"jianjianai", repository:"my-flist-files"}),
       downProxy:cloudflarePagesDownProxy(),
     },
-    // --------软件------
-    {
-      mountPath:"/软件/KnapsackToGo4",
-      analysis:githubReleasesFilesAnalysis({user:"jianjianai", repository:"KnapsackToGo4"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/BBDown",
-      analysis:githubReleasesFilesAnalysis({user:"nilaoda", repository:"BBDown"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/ffmpeg",
-      analysis:githubReleasesFilesAnalysis({user:"GyanD", repository:"codexffmpeg"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/ClashMetaForAndroid",
-      analysis:githubReleasesFilesAnalysis({user:"MetaCubeX", repository:"ClashMetaForAndroid"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/clash-verge-rev",
-      analysis:githubReleasesFilesAnalysis({user:"clash-verge-rev", repository:"clash-verge-rev"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/BilibiliDown",
-      analysis:githubReleasesFilesAnalysis({user:"nICEnnnnnnnLee", repository:"BilibiliDown"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/git-for-windows",
-      analysis:githubReleasesFilesAnalysis({user:"git-for-windows", repository:"git"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/yt-dlp",
-      analysis:githubReleasesFilesAnalysis({user:"yt-dlp", repository:"yt-dlp"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/mihomo",
-      analysis:githubReleasesFilesAnalysis({user:"MetaCubeX", repository:"mihomo"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/v2rayN",
-      analysis:githubReleasesFilesAnalysis({user:"2dust", repository:"v2rayN"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/hiddify",
-      analysis:githubReleasesFilesAnalysis({user:"hiddify", repository:"hiddify-app"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/Motrix",
-      analysis:githubReleasesFilesAnalysis({user:"agalwood", repository:"Motrix"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/aria2",
-      analysis:githubReleasesFilesAnalysis({user:"aria2", repository:"aria2"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/ShareX",
-      analysis:githubReleasesFilesAnalysis({user:"ShareX", repository:"ShareX"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/Obsidian",
-      analysis:githubReleasesFilesAnalysis({user:"obsidianmd", repository:"obsidian-releases"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/PowerShell",
-      analysis:githubReleasesFilesAnalysis({user:"PowerShell", repository:"PowerShell"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/neovim",
-      analysis:githubReleasesFilesAnalysis({user:"neovim", repository:"neovim"}),
-      downProxy:cloudflarePagesDownProxy(),
-    }, {
-      mountPath:"/软件/qBittorrent",
-      analysis:githubReleasesFilesAnalysis({user:"qbittorrent", repository:"qBittorrent"}),
-      downProxy:cloudflarePagesDownProxy(),
-    },
-    
+    // --------软件（从 flist/ 目录自动加载）------
+    ...flistConfigs,
   ])
 })
