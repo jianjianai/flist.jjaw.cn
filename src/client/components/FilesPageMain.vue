@@ -22,6 +22,9 @@ const content = computed(()=>frontmatter.value.flistData?.content);
       <MainBox v-if="$slots.default">
         <slot></slot>
       </MainBox>
+      <MainBox v-else>
+        <div class="empty">没有找到如何文件,请在mounts文件夹中添加挂载!</div>
+      </MainBox>
       <FContent v-if="content" :content="content" style="padding: 1rem"></FContent>
     </div>
     <div class="footer">
@@ -33,6 +36,9 @@ const content = computed(()=>frontmatter.value.flistData?.content);
 </template>
 
 <style scoped>
+.empty{
+  text-align: center;
+}
 .page-main{
   background-color: var(--page-bgc);
   padding: 0 2%;

@@ -8,7 +8,9 @@ import { Analysis } from "../../base/AllAnalysis.js";
 export interface GithubRepository {
     user: string
     repository: string,
-    authorizationToken?: string
+    authorizationToken?: string,
+    per_page?: number, // 页面大小
+    page?: number // 第几页
 }
 
 /**
@@ -24,7 +26,14 @@ async function githubReleasesFileTree(config: GithubRepository): Promise<Folder>
         if(config.authorizationToken){
             headers.set("Authorization", `Bearer ${config.authorizationToken}`);
         }
-        tagInfo = await fetch(`https://api.github.com/repos/${config.user}/${config.repository}/releases`, { headers: headers });
+        const qurl = new URL(`https://api.github.com/repos/${config.user}/${config.repository}/releases`);
+        if(config.per_page){
+            qurl.searchParams.append("per_page",`${config.per_page}`);
+        }
+        if(config.page){
+            qurl.searchParams.append("page",`${config.page}`);
+        }
+        tagInfo = await fetch(qurl, { headers: headers });
     } catch (e) {
         throw new Error("Github Api 请求失败! 请检查网络是否畅通。" + e);
     }
